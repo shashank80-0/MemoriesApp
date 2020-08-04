@@ -1,0 +1,4 @@
+Database: memories_app_db
+Username: shashank8000
+Email: photosbackupshashank@gmail.com
+Password: C5h82a7D6Yr74
