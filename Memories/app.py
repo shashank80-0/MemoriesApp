@@ -38,7 +38,7 @@ def index():
 def login():
     message = None
     if request.method == 'GET':
-        return render_template('login.html')
+        return render_template('login.html', message=message)
     elif request.method == 'POST':
         emailId = request.form['email-id']
         password = request.form['password']
@@ -51,6 +51,7 @@ def login():
             return render_template('login.html', message = message)
         else:
             session['userId'] = user.user_id 
+            print(session['userId'])
             return redirect(url_for('home'))
 
 @app.route('/signup', methods=['POST','GET'])
@@ -77,8 +78,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
             message = """User has been created!"""
-            time.sleep(2)
-            return redirect(url_for('login'))
+            return render_template('signup.html',message=message)
 
 
 @app.route('/add',methods=['POST'])
@@ -98,6 +98,10 @@ def add():
     db.session.commit()
     print(storyImage.filename)
     return storyImage.filename
+
+@app.route('/home')
+def home():
+    return render_template('home.html');
 
 
 
