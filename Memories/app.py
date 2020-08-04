@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
+import time
 
 app = Flask(__name__)
 
@@ -76,6 +77,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
             message = """User has been created!"""
+            time.sleep(2)
             return redirect(url_for('login'))
 
 
