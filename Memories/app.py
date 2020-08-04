@@ -81,29 +81,41 @@ def signup():
             return render_template('signup.html',message=message)
 
 
-@app.route('/add',methods=['POST'])
-def add():
+@app.route('/home')
+def home():
+    userId = session['userId']
+    stories = owner.query.filter_by(user_id = userId).all()
+
+    return render_template('home.html');
+
+@app.route('/add-story')
+def addStory():
+    return render_template('add_story.html')
+
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    userId = session['userId']
     storyImage = request.files['story-image']
     storyName = storyImage.filename
     storyDescription = request.form['story-description']
     storyTime = request.form['story-time']
     storyLocation = request.form['story-location']
-    tempStory = story(image=storyImage.read(),
+    newStory = story(image=storyImage.read(),
                       name = storyName,
                       description=storyDescription,
                       date=storyTime,
                       location=storyLocation
                       )
-    db.session.add(tempStory)
+    db.session.add(newStory)
+    db.session.flush()
+    newStoryReference = owner(
+                            story_id=newStory.story_id,
+                            user_id=userId)
+    db.session.add(newStoryReference)
     db.session.commit()
-    print(storyImage.filename)
-    return storyImage.filename
-
-@app.route('/home')
-def home():
-    return render_template('home.html');
-
-
+    message = "Memory has been added!"        
+    return render_template('add_story.html',message=message)
 
 if __name__ == '__main__':
     app.run()

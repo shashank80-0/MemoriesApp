@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Memories</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>    
+  </head>
+
+  <body>
+
+        <header>
+            <nav class="navbar navbar-dark shadow" style="background-color: #303030">
+              <div class="container">
+                 <a href="#" class="navbar-brand">
+                  <span><i class="fa fa-camera-retro"></i></span>
+                  <strong>Memories</strong></a>
+                  <div class="ml-auto">
+                    <a href="#" class="btn btn-light btn-sm nav-item">Sign out</a>
+                  </div>
+                    
+              </div>
+            </nav> 
+        </header>
+
+        <div class="container">
+          <a href="index.html" class="text-muted"><i class="fa fa-arrow-left pr-2"></i>Go Back</a>
+        </div>
+
+<main role="main">
+
+  <div align="center" class="text-danger p-2" style="font-size: 0.7rem">
+    {% if message %}
+    <p><strong></strong>{{ message }}</p>
+    {% endif %}
+  </div>
+
+  <div class="d-flex justify-content-center py-5">
+    <form class="story-form container" method="POST" action="/upload" enctype="multipart/form-data">
+      <h2 align="center">SHARE A MEMORY</h2>
+
+      <div class="form-group form-row">
+        <label for="story-image">Upload A Memory</label>
+        <input type="file" class="form-control-file" name="story-image" id="story-image">
+      </div>
+
+      <div class="form-group form-row">
+        <label for="story-description">Tell us about this memory.</label>
+        <textarea class="form-control" name="story-description"  rows="4" id="story-description"></textarea>
+      </div>
+
+      <div class="form-group form-row">
+        <label for="story-time">When was this memory made?</label>
+        <input type="text" class="form-control" id="story-time" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="DD-MM-YYYY" onkeydown="return false" name = "story-time">
+      </div>
+
+      <div class="form-group form-row">
+        <label for="story-location">Care to share the location.</label>
+        <input type="text" class="form-control" id="story-location" name = "story-location">
+      </div>
+
+      <div class="form-group form-row d-flex justify-content-center">
+        <button type="submit" class="btn btn-dark mx-1">Share</button>
+        <button type="reset" class="btn btn-dark mx-1">Reset</button>
+      </div>
+      
+      
+    </form>
+  </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#" class="text-muted">Back to top</a>
+    </p>
+    <p>&copy; Shashank Agarwal</p>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+
+
+
+</body>
+</html>
