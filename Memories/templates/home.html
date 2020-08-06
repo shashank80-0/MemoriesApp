@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Memories</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/static/css/main.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
@@ -36,7 +36,7 @@
                   <span><i class="fa fa-camera-retro"></i></span>
                   <strong>Memories</strong></a>
                   <div class="ml-auto">
-                    <a href="#" class="btn btn-light btn-sm nav-item">Sign out</a>
+                    <a href="/signout" class="btn btn-light btn-sm nav-item">Sign out</a>
                   </div>
                     
               </div>
@@ -57,57 +57,7 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-      <div class="row">
-        <div class="col-md-4 story">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" src="shashank.jpg"></img>
-            <div class="card-body">
-              <p class="card-text">This photo is taken during a trip to Kasol in May 2016.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="view">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="edit">Edit</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="delete">Delete</button>
-                </div>
-                <small class="text-muted" id="time-stamp">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 story">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" src="2.jpeg"></img>
-            <div class="card-body">
-              <p class="card-text">This photo is taken during a trip to Kasol in May 2016.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="view">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="edit">Edit</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="delete">Delete</button>
-                </div>
-                <small class="text-muted" id="time-stamp">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div> 
-
-        <div class="col-md-4 story">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" src="1.jpeg"></img>
-            <div class="card-body">
-              <p class="card-text">This photo is taken during a trip to Kasol in May 2016.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="view">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="edit">Edit</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" id="delete">Delete</button>
-                </div>
-                <small class="text-muted" id="time-stamp">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div> 
+      <div class="row" id="album-story">   
 
       </div>
     </div>
@@ -124,11 +74,8 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
 
 
 

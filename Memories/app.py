@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
-import time
+import base64
+
 
 app = Flask(__name__)
 
@@ -51,7 +52,6 @@ def login():
             return render_template('login.html', message = message)
         else:
             session['userId'] = user.user_id 
-            print(session['userId'])
             return redirect(url_for('home'))
 
 @app.route('/signup', methods=['POST','GET'])
@@ -79,14 +79,6 @@ def signup():
             db.session.commit()
             message = """User has been created!"""
             return render_template('signup.html',message=message)
-
-
-@app.route('/home')
-def home():
-    userId = session['userId']
-    stories = owner.query.filter_by(user_id = userId).all()
-
-    return render_template('home.html');
 
 @app.route('/add-story')
 def addStory():
@@ -116,6 +108,30 @@ def upload():
     db.session.commit()
     message = "Memory has been added!"        
     return render_template('add_story.html',message=message)
+
+@app.route('/home')
+def home():
+    userId = session['userId']
+    ownerStories = owner.query.filter_by(user_id = userId).all()
+    allStories = []
+    for x in ownerStories:
+        tempStory = story.query.filter_by(story_id = x.story_id).first()
+        tempList = {}
+        tempList['ID'] = tempStory.story_id
+        encoded_image = base64.encodestring(tempStory.image)
+        tempList['IMAGE'] = str(encoded_image)
+        tempList['NAME'] = tempStory.name
+        tempList['DESCRIPTION'] = tempStory.description
+        tempList['DATE'] = str(tempStory.date)
+        tempList['LOCATION'] = tempStory.location
+        allStories.append(tempList)
+    global jsonApi
+    jsonApi = jsonify(allStories)
+    return render_template('home.html')
+
+@app.route('/storiesApi', methods=['GET'])
+def storiesApi():
+    return jsonApi
 
 if __name__ == '__main__':
     app.run()
