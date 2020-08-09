@@ -1,15 +1,5 @@
 $(document).ready(function(){
 
-	$(".story").mouseenter(function(){
-		$(this).addClass('zoom-animation');
-
-	});
-	$(".story").mouseleave(function(){
-		$(this).removeClass('zoom-animation');
-
-	});
-
-
 		$.ajax({
 		type: 'GET',
 		url: "/storiesApi",
@@ -50,4 +40,18 @@ $(document).ready(function(){
 			$('#album-story').append(output);
 		}
 	});
+
+
+	
+	$(".story").mouseenter(function(){
+		$(this).addClass('zoom-animation');
+
+	});
+	$(".story").mouseleave(function(){
+		$(this).removeClass('zoom-animation');
+
+	});
+
+
+
 });

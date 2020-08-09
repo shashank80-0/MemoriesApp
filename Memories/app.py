@@ -53,6 +53,10 @@ def login():
         else:
             session['userId'] = user.user_id 
             return redirect(url_for('home'))
+@app.route('/logout')
+def logout():
+    session.pop('userId', None)
+    return redirect(url_for('login'))
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
