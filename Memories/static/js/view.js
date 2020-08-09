@@ -1,0 +1,10 @@
+$(document).ready(function(){	
+	$("#description").text($.cookie("Description"));
+	$("#date").append($.cookie("Date"));
+	$("#location").append($.cookie("Location"));
+	$("#image").attr("src",localStorage.getItem("Source"));
+	$.removeCookie("Description");
+	$.removeCookie("Date");
+	$.removeCookie("Location");
+	localStorage.clear();
+});

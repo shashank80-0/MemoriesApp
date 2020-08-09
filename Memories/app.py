@@ -122,7 +122,7 @@ def home():
         tempStory = story.query.filter_by(story_id = x.story_id).first()
         tempList = {}
         tempList['ID'] = tempStory.story_id
-        encoded_image = base64.encodestring(tempStory.image)
+        encoded_image = base64.encodebytes(tempStory.image)
         tempList['IMAGE'] = str(encoded_image)
         tempList['NAME'] = tempStory.name
         tempList['DESCRIPTION'] = tempStory.description
@@ -136,6 +136,11 @@ def home():
 @app.route('/storiesApi', methods=['GET'])
 def storiesApi():
     return jsonApi
+
+@app.route('/view-story')
+def viewStory():
+    return render_template('view_story.html')
+
 
 if __name__ == '__main__':
     app.run()

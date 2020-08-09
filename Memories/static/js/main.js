@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-		$.ajax({
+	$.ajax({
 		type: 'GET',
 		url: "/storiesApi",
 		success: function(stories){
@@ -17,20 +17,22 @@ $(document).ready(function(){
 				let storyImageSource = "data:image/"+fileExtension+";base64,"+correctedStoryImage;
 				let storyDescription = story.DESCRIPTION;
 				let storyDate = story.DATE;
+				let dateOnly = storyDate.slice(0,10);
 				let storyLocation = story.LOCATION;
 
 				output+= ` <div class="col-md-4 story">
 					          <div class="card mb-4 shadow-sm">
-					            <img class="bd-placeholder-img card-img-top" width="100%" src=${storyImageSource}></img>
+					            <img class="bd-placeholder-img card-img-top" width="100%" src=${storyImageSource} id="story-image"></img>
 					            <div class="card-body">
-					              <p class="card-text">${storyDescription}</p>
 					              <div class="d-flex justify-content-between align-items-center">
 					                <div class="btn-group">
-					                  <button type="button" class="btn btn-sm btn-outline-secondary" id="view">View</button>
-					                  <button type="button" class="btn btn-sm btn-outline-secondary" id="edit">Edit</button>
-					                  <button type="button" class="btn btn-sm btn-outline-secondary" id="delete">Delete</button>
+					                  <a type="button" class="btn btn-sm btn-outline-secondary" id="view" href="/view-story">View</a>
+					                  <a type="button" class="btn btn-sm btn-outline-secondary" id="edit">Edit</a>
+					                  <a type="button" class="btn btn-sm btn-outline-secondary" id="delete">Delete</a>
+					                  <span hidden id="story-location">${storyLocation}</span>
+					                  <span hidden id="story-description">${storyDescription}</span>
 					                </div>
-					                <small class="text-muted" id="time-stamp">9 mins</small>
+					                <small class="text-muted" id="story-date">${dateOnly}</small>
 					              </div>
 					            </div>
 					          </div>
@@ -40,18 +42,32 @@ $(document).ready(function(){
 			$('#album-story').append(output);
 		}
 	});
+		
 
+	$(document).on("click", "#view", function(){
+		//storyDescription = $(this).siblings("#story-description").text();
+		$.cookie("Description", $(this).siblings("#story-description").text());
+		//dateOnly  = $(this).parent().next().text();
+		$.cookie("Date", $(this).parent().next().text());
+		//storyLocation = $(this).siblings("#story-location").text();
+		$.cookie("Location", $(this).siblings("#story-location").text());
+		//storyImageSource = $(this).parents(".card-body").prev().attr("src");
+		localStorage.setItem("Source", $(this).parents(".card-body").prev().attr("src");
+	});
 
-	
-	$(".story").mouseenter(function(){
+	$(document).on("mouseenter", ".story",function(){
 		$(this).addClass('zoom-animation');
 
 	});
-	$(".story").mouseleave(function(){
+	$(document).on("mouseleave", ".story", function(){
 		$(this).removeClass('zoom-animation');
 
 	});
 
-
+	
 
 });
+	
+	
+
+
