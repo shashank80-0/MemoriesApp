@@ -4,7 +4,7 @@ import base64
 
 app = Flask(__name__)
 
-app.config ['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://shashank8000:C5h82a7D6Yr74@db4free.net:3306/memories_app_db')
+app.config ['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://shashank8000:C5h82a7D6Yr74@db4free.net:3306/memories_app_db?charset=utf8mb4')
 app.config ['SQLALCHEMY_ECHO'] = False
 app.config ['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config ['SECRET_KEY'] = 'AldAjSVhWCwhVnHx8LoX'
