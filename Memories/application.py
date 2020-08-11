@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, request, session, j
 from flask_sqlalchemy import SQLAlchemy
 import base64
 
-
 app = Flask(__name__)
 
 app.config ['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://shashank8000:C5h82a7D6Yr74@db4free.net:3306/memories_app_db')
