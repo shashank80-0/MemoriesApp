@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	$.ajax({
 		type: 'GET',
 		url: "/storiesApi",
@@ -48,6 +47,11 @@ $(document).ready(function(){
 		}
 	});
 		
+	$(document).on("DOMSubtreeModified", "#album-story", function(){
+		$("#loading-spinner").css("display","none");
+	});
+
+
 
 	$(document).on("click", "#view", function(){
 		$.cookie("Description", $(this).siblings("#story-description").text());
@@ -81,6 +85,8 @@ $(document).ready(function(){
 		$.cookie("Id", $(this).siblings("#story-id").text());
 		localStorage.setItem("Source", $(this).parents(".card-body").prev().attr("src"));
 	});
+
+
 
 });
 	
