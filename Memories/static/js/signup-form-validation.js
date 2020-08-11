@@ -1,5 +1,4 @@
 function validateForm(){
-	console.log("Validation has started");
 	let emailId = $('#email-id').val();
 	let password = $('#password').val();
 	let confirmPassword = $('#confirm-password').val();
