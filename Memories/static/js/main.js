@@ -1,4 +1,12 @@
 $(document).ready(function(){
+
+	$(document).on("DOMSubtreeModified", "#album-story", function(){
+		$("#loading-spinner").css("display","none");
+	});
+
+	setTimeout(loadingStories, 8000);
+
+
 	$.ajax({
 		type: 'GET',
 		url: "/storiesApi",
@@ -18,7 +26,6 @@ $(document).ready(function(){
 				let storyDate = story.DATE;
 				let dateOnly = storyDate.slice(0,10);
 				let storyLocation = story.LOCATION;
-				//console.log(storyId);
 
 				output+= ` <div class="col-md-4 story" id="temp">
 					          <div class="card mb-4 shadow-sm">
@@ -46,12 +53,7 @@ $(document).ready(function(){
 			$('#album-story').append(output);
 		}
 	});
-		
-	$(document).on("DOMSubtreeModified", "#album-story", function(){
-		$("#loading-spinner").css("display","none");
-	});
-
-
+	
 
 	$(document).on("click", "#view", function(){
 		$.cookie("Description", $(this).siblings("#story-description").text());
@@ -86,7 +88,9 @@ $(document).ready(function(){
 		localStorage.setItem("Source", $(this).parents(".card-body").prev().attr("src"));
 	});
 
-
+	function loadingStories(){
+		$("#loading-spinner").css("display","none");
+	}
 
 });
 	
