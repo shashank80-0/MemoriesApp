@@ -1,9 +1,5 @@
 $(document).ready(function(){
-
-	/*$(document).on("DOMSubtreeModified", "#album-story", function(){
-		$("#loading-spinner").css("display","none");
-	});*/
-
+	
 	$.ajax({
 		type: 'GET',
 		url: "/storiesApi",
