@@ -150,6 +150,7 @@ def deleteStory():
         deleteStory = story.query.filter_by(story_id = storyId).first()
         deleteOwner = owner.query.filter_by(story_id = storyId).first()
         db.session.delete(deleteOwner)
+        db.session.flush()
         db.session.delete(deleteStory)
         db.session.commit()
         return redirect(url_for('home'))
