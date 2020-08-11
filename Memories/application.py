@@ -36,6 +36,7 @@ def index():
 
 @app.route('/login', methods=['POST','GET'])
 def login():
+    session.pop('userId', None)
     message = None
     if request.method == 'GET':
         return render_template('login.html', message=message)
