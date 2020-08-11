@@ -132,6 +132,7 @@ def home():
     global jsonApi
     jsonApi = jsonify(allStories)
     return render_template('home.html')
+    
 
 @app.route('/storiesApi', methods=['GET'])
 def storiesApi():
@@ -140,6 +141,36 @@ def storiesApi():
 @app.route('/view-story')
 def viewStory():
     return render_template('view_story.html')
+
+@app.route('/delete-story', methods=['POST','GET'])
+def deleteStory():
+    if request.method == 'GET':
+        return render_template('delete_story.html')
+    elif request.method == 'POST':
+        storyId = request.form['story-id']
+        deleteStory = story.query.filter_by(story_id = storyId).first()
+        deleteOwner = owner.query.filter_by(story_id = storyId).first()
+        db.session.delete(deleteStory)
+        db.session.delete(deleteOwner)
+        db.session.commit()
+        return redirect(url_for('home'))
+
+@app.route('/edit-story', methods=['POST','GET'])
+def editStory():
+    if request.method == 'GET':
+        return render_template('edit_story.html')
+    elif request.method == 'POST':
+        storyDescription = request.form['story-description']
+        storyTime = request.form['story-time']
+        storyLocation = request.form['story-location']
+        storyId = request.form['story-id']
+        editStory = story.query.filter_by(story_id = storyId).first()
+        editStory.description = storyDescription
+        editStory.date = storyTime
+        editStory.location = storyLocation
+        db.session.commit()
+        return redirect(url_for('home'))
+                            
 
 
 if __name__ == '__main__':

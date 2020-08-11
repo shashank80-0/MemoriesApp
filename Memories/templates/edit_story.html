@@ -10,9 +10,21 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+   <style type="text/css">
+     
+      .edit-form input ,textarea{
+        border-width: 0 0 1px 0;        
+        background-color:transparent;
+      }
+
+   </style>
+
+
   </head>
 
-  <body style="background-color: #dddddd">
+
+  <body style="background-color: #f5efef">
 
         <header>
             <nav class="navbar navbar-dark shadow" style="background-color: #303030">
@@ -33,43 +45,56 @@
   <div class="container-fluid p-5">
     
     <div class="row"> 
+
       <div class="col-md-6 d-flex justify-content-center">
-          <img class="img-fluid shadow" id="image" style="width: 80%; border-radius: 50%;">        
+          <img class="img-fluid shadow" id="image" style="width: 80%; border-radius: 50%;">   
       </div>
 
       <div class="col-md-6 d-flex flex-column justify-content-center">
 
             <div class="py-3">
               <span class="display-4">
-                A bit about this memory.
+               Update this memory.
               </span>         
              </div>
 
+             
+
             <div class="text-justify" style="font-family: 'Nanum Myeongjo', serif;">
 
+              <form method="POST" action="" class="edit-form">
               <div class="py-1">
-                <p class="h3" id= "description">
-                </p>           
+                <textarea class="h3" id= "description" name="story-description" style="width: 65%"></textarea>
+                           
               </div>
 
               <div class="py-1">
-                <p class="h4" id="location">
-                 <span><i class="fa fa-map-marker pr-2" aria-hidden="true"></i></span>
+                <span><i class="fa fa-map-marker pr-2 h4" aria-hidden="true"></i></span>
+                <input type="text" class="h4" id="location" name="story-location" style="width: 60%">
+                 
               </div>
 
                <div class="py-1">
-                <p class="h4" id="date">
-                  <span class="pr-2"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                </p>
-              </div>               
+                <span><i class="fa fa-calendar pr-2 h4" aria-hidden="true"></i></span>
+                <input class="h4" type="text" id="date" name="story-time" onfocus="(this.type='date')" onblur="(this.type='text')" onkeydown="return false" style="width: 60%">
+                  
+              </div>
 
-            </div>              
+              <div class="py-1" style="display: none">
+                <input id="storyId" name="story-id">
+              </div>
+
+              <button type="submit" class="btn btn-dark">Update</button>               
+            </form>
+            </div> 
+          
+
       </div>   
     </div>
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/view.js"></script>
+<script type="text/javascript" src="/static/js/edit.js"></script>
 <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
 
 
