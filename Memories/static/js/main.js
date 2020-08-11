@@ -4,7 +4,8 @@ $(document).ready(function(){
 		$("#loading-spinner").css("display","none");
 	});
 
-	setTimeout(loadingStories, 8000);
+
+
 
 
 	$.ajax({
@@ -51,6 +52,7 @@ $(document).ready(function(){
 				`; 
 			});
 			$('#album-story').append(output);
+			$("#loading-spinner").css("display","none");
 		}
 	});
 	
@@ -87,10 +89,6 @@ $(document).ready(function(){
 		$.cookie("Id", $(this).siblings("#story-id").text());
 		localStorage.setItem("Source", $(this).parents(".card-body").prev().attr("src"));
 	});
-
-	function loadingStories(){
-		$("#loading-spinner").css("display","none");
-	}
 
 });
 	
