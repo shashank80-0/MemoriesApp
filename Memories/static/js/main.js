@@ -1,12 +1,8 @@
 $(document).ready(function(){
 
-	$(document).on("DOMSubtreeModified", "#album-story", function(){
+	/*$(document).on("DOMSubtreeModified", "#album-story", function(){
 		$("#loading-spinner").css("display","none");
-	});
-
-
-
-
+	});*/
 
 	$.ajax({
 		type: 'GET',
@@ -52,9 +48,13 @@ $(document).ready(function(){
 				`; 
 			});
 			$('#album-story').append(output);
-			$("#loading-spinner").css("display","none");
+			//$("#loading-spinner").css("display","none");
 		}
 	});
+
+	 $(document).ajaxComplete(function(){
+    	$("#loading-spinner").css("display", "none");
+  	});
 	
 
 	$(document).on("click", "#view", function(){
